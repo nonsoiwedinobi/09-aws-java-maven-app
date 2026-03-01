@@ -12,8 +12,9 @@ pipeline {
   tools { maven 'maven-3.9' }
 
   environment {
-    IMAGE_NAME = 'devnonso/demo-app:java-maven-1.0'
-  }
+  IMAGE_REPO = 'devnonso/demo-app'
+  IMAGE_TAG  = 'java-maven-1.0'
+}
 
   stages {
     stage('build app') {
@@ -27,9 +28,9 @@ pipeline {
       steps {
         script {
           echo 'building the docker image...'
-          buildImage(env.IMAGE_NAME)
+          buildImage(env.IMAGE_REPO, env.IMAGE_TAG)
           dockerLogin()
-          dockerPush(env.IMAGE_NAME)
+          dockerPush("${env.IMAGE_REPO}:${env.IMAGE_TAG}")
         }
       }
     }
