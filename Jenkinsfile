@@ -13,7 +13,7 @@ pipeline {
 
   environment {
   IMAGE_REPO = 'devnonso/demo-app'
-  IMAGE_TAG  = 'java-maven-1.0'
+  IMAGE_TAG  = 'java-maven-2.0'
 }
 
   stages {
